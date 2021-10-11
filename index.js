@@ -46,10 +46,6 @@ function counterMaker() {
 
 const counter1 = counterMaker();
 
-console.log(counter1());
-console.log(counter1());
-console.log(counter1());
-
 
 // counter2 code
 let count = 0;
@@ -57,10 +53,6 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
-console.log(counter2());
-console.log(counter2());
-console.log(counter2());
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -71,10 +63,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * Math.floor(3));
 }
 
+console.log(inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -89,10 +82,20 @@ Use the finalScore function below to do the following:
   "Away": 5
 }
 */ 
-
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningCB, inningsPlayed){
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < inningsPlayed; i++){ //after each inning update the score of home and away
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore,
+  } //after last inning return object containing final score of the innings played
 }
+
+console.log(finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
