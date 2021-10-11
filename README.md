@@ -61,6 +61,9 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+
+  Closure happens when an inner function grabs a variable from an outer function. It allows us to put functions together and pass a variable down (never back up) through to the inner functions of our code.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,8 +85,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+  The closure is where name is grabbed from personalDice in the console.log statement. It is where the inner function grabs the variable (name) from the outer function (personalDice).
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+  It always states that Dan rolled a number, but the number could change every time the function is called.
+
 c. What is the lexical scope of `newRoll`? 
+
+  The lexical scope of newRoll is the function inside of personalDice
 
 
 ### Task 3 - Stretch Goals
