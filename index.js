@@ -102,10 +102,14 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningCB) {
+  return {
+    Home: inningCB(),
+    Away: inningCB(),
+  } // return object w/ a score for home and a score for away
 }
 
+console.log(getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -148,10 +152,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreboard(inningScoreCB, inningCB, inningsPlayed) {
+  const results = [];
+  let homeScore = 0;
+  let awayScore = 0;
 
+  for(let i = 0; i < inningsPlayed; i++){
+    const currentInning = inningScoreCB(inningCB);
+    homeScore = homeScore + currentInning.Home;
+    awayScore = awayScore + currentInning.Away;
+    results.push(`Inning ${i + 1}: Away ${currentInning.Away} - Home ${currentInning.Home}`);
+  }
+
+  if(homeScore === awayScore){
+    results.push(`This game will require extra innings: Away ${currentInning.Away} - Home ${currentInning.Home}`);
+  }else{
+    results.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
+  }
+  return results;//Return an array where each of it's index values equals a string stating the Home and Away team's scores for each inning.  Not the cummulative score.
+}
 
 
 
